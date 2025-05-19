@@ -1,0 +1,147 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+.cardContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px;
+}
+
+.left {
+  flex: 3;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+}
+
+.likes {
+  color: #1890ff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tags {
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 5px 10px;
+  margin-right: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  overflow-wrap: break-word;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+}
+
+.avatarContainer {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.showPlaceholder {
+  display: flex;
+}
+
+.author,
+.date {
+  font-size: 14px;
+  color: #666;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-pagination {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ant-pagination-item {
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+}
+
+.ant-pagination-prev,
+.ant-pagination-next {
+  font-size: 16px;
+  color: #1890ff;
+  cursor: pointer;
+}
+
+.ant-pagination-item-active {
+  background-color: #1890ff;
+  color: white;
+}

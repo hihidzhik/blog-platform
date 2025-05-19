@@ -1,0 +1,104 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333333;
+  background-color: transparent;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  color: #1890ff;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.userName {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  display: flex;
+  align-items: center;
+  border: none;
+}
+
+.signIn,
+.signUp {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: "Arial", sans-serif;
+}
+
+.signUp {
+  background: transparent;
+  border: 2px solid #52c41a;
+  color: #52c41a;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+}
+
+.signUp:hover {
+  background-color: #52c41a;
+  color: white;
+}
+
+.logOut {
+  color: #666666;
+  border: #666666 solid 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logOut:hover {
+  background-color: #666666;
+  color: white;
+}
+
+.createArticle {
+  border: 2px solid #52c41a;
+  color: #52c41a;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+}
+
+.createArticle:hover {
+  background-color: #52c41a;
+  color: white;
+}

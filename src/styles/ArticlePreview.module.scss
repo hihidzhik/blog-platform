@@ -1,0 +1,178 @@
+.articlePreview {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.articleLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #1890ff;
+  font-weight: lighter;
+}
+
+.titleBox {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.likes {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #888;
+}
+
+.description {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.tags {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: transparent;
+  border: #333333 1px solid;
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.infoMeta {
+  display: grid;
+}
+
+.articleMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.author {
+  font-weight: bold;
+  color: #333;
+}
+
+.date {
+  color: #888;
+  font-size: 12px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.markdown {
+  margin-top: 20px;
+  line-height: 1.6;
+  color: #333;
+  font-size: 16px;
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 1em;
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
+    margin-top: 1em;
+  }
+
+  code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.centered {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+  color: #666;
+}
+
+.editButton {
+  border: 2px solid #52c41a;
+  color: #52c41a;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+
+  &:hover {
+    background-color: #52c41a;
+    color: white;
+  }
+}
+
+.deleteButton {
+  padding: 5px 15px;
+  border: 2px solid red;
+  color: red;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+}
