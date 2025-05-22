@@ -17,6 +17,7 @@ function EditArticle() {
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState('');
+  const [tagError, setTagError] = useState('');
 
   const {
     register,
@@ -33,14 +34,11 @@ function EditArticle() {
     const fetchArticle = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await fetch(
-          `https://blog-platform.kata.academy/api/articles/${slug}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const res = await fetch(`https://blog-platform.kata.academy/api/articles/${slug}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
         const data = await res.json();
         reset({
           title: data.article.title,
@@ -58,10 +56,19 @@ function EditArticle() {
 
   const handleAddTag = () => {
     const trimmed = newTag.trim();
-    if (trimmed && !tags.includes(trimmed)) {
-      setTags([...tags, trimmed]);
-      setNewTag('');
+    if (!trimmed) {
+      setTagError('Поле тега не может быть пустым');
+      return;
     }
+
+    if (tags.includes(trimmed)) {
+      setTagError('Этот тег уже добавлен');
+      return;
+    }
+
+    setTags([...tags, trimmed]);
+    setNewTag('');
+    setTagError('');
   };
 
   const handleDeleteTag = (index) => {
@@ -77,25 +84,20 @@ function EditArticle() {
     };
 
     try {
-      const res = await fetch(
-        `https://blog-platform.kata.academy/api/articles/${slug}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-          body: JSON.stringify(updatedArticle),
+      const res = await fetch(`https://blog-platform.kata.academy/api/articles/${slug}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+        body: JSON.stringify(updatedArticle),
+      });
 
       const resData = await res.json();
 
       if (!res.ok) {
         Object.entries(resData.errors || {}).forEach(([key, value]) => {
-          const message = Array.isArray(value)
-            ? value.join(', ')
-            : String(value);
+          const message = Array.isArray(value) ? value.join(', ') : String(value);
           setError(key, { type: 'server', message });
         });
         return;
@@ -113,12 +115,7 @@ function EditArticle() {
         <h2>Edit article</h2>
 
         <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          {...register('title')}
-          className={styles.input}
-          placeholder="Title"
-        />
+        <input id="title" {...register('title')} className={styles.input} placeholder="Title" />
         {errors.title && <p className={styles.error}>{errors.title.message}</p>}
 
         <label htmlFor="description">Short description</label>
@@ -128,31 +125,19 @@ function EditArticle() {
           className={styles.input}
           placeholder="Description"
         />
-        {errors.description && (
-          <p className={styles.error}>{errors.description.message}</p>
-        )}
+        {errors.description && <p className={styles.error}>{errors.description.message}</p>}
 
         <label htmlFor="body">Text</label>
-        <textarea
-          id="body"
-          {...register('body')}
-          className={styles.bigInput}
-          placeholder="Text"
-        />
+        <textarea id="body" {...register('body')} className={styles.bigInput} placeholder="Text" />
         {errors.body && <p className={styles.error}>{errors.body.message}</p>}
 
         <div className={styles.tagContainer}>
-          <label>Tags</label>
+          <label htmlFor="tags">Tags</label>
 
           <div className={styles.tags}>
             {tags.map((tag, index) => (
               <div key={index} className={styles.tagRow}>
-                <input
-                  type="text"
-                  value={tag}
-                  readOnly
-                  className={styles.input}
-                />
+                <input type="text" value={tag} readOnly className={styles.input} />
                 <button
                   type="button"
                   onClick={() => handleDeleteTag(index)}
@@ -168,18 +153,18 @@ function EditArticle() {
             <input
               type="text"
               value={newTag}
-              onChange={(e) => setNewTag(e.target.value)}
+              onChange={(e) => {
+                setNewTag(e.target.value);
+                setTagError('');
+              }}
               placeholder="Tag"
               className={styles.input}
             />
-            <button
-              type="button"
-              onClick={handleAddTag}
-              className={styles.addTag}
-            >
+            <button type="button" onClick={handleAddTag} className={styles.addTag}>
               Add tag
             </button>
           </div>
+          {tagError && <p className={styles.error}>{tagError}</p>}
         </div>
 
         <button type="submit" className={styles.submitButton}>
